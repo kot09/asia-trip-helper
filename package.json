@@ -1,0 +1,22 @@
+{
+  "name": "asia-trip-helper",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "express",
+    "asia",
+    "trip"
+  ],
+  "author": "Carson Huang",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.14.0",
+    "lodash": "^4.17.4",
+    "phantom": "^3.2.1",
+    "request": "^2.79.0"
+  }
+}
