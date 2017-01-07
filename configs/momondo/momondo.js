@@ -16,7 +16,7 @@ var Momondo = function(){};
 
 /**
 * opts = {
-* 	departureSegments = [], // ICAO codes (ie: YUL == Montreal Trudeau Airport)
+* 	departureSegments = [], // ICAO codes (ie: YUL == Montreal Trudeau Airport. Use the Momondo website for the codes)
 *	arrivalSegments = [], //idem as departureSegments
 * 	tripType =  int // 1 = One way, 2 = Return trip, 4 = Multi City
 * 	departureDates = [], // DD-MM-YYYY; more than one if tripType == 4
@@ -31,11 +31,12 @@ Momondo.prototype.getLowestPrice = function(opts, callback){
 
 	phantom.create(["--ssl-protocol=any"])
 	.then(instance => {
+		console.log("Phantom instance created");
     	phInstance = instance;
     	return instance.createPage();
 	})
 	.then(page => {
-		console.log("Opening page. Wait approx. 5-10 seconds for Momondo to load completely...");
+		console.log("Page opened. Wait approx. 5-10 seconds for Momondo to load completely...");
 		page.open(sitepage)
 		.then(function(status){
 			global.setTimeout(function () {
@@ -51,9 +52,11 @@ Momondo.prototype.getLowestPrice = function(opts, callback){
 					callback(price);
 
 					page.close();
+					console.log("Page closed");
 					phInstance.exit();
+					console.log("Phantom instance exited");
 				});
-			}, 5000);
+			}, 10000);
 		});
 	})
 	.catch(error => {
@@ -106,6 +109,23 @@ function getReturnSearchQuery(opts){
 				+ "&SD1=" + opts.departureSegments[0]
 				+ "&SDP1=" + opts.returnDate
 				+ "&AD=" + opts.adults;
+
+	return searchQuery;
+}
+
+function getMultiSearchQuery(opts){
+	var searchQuery = "";
+	var segNo = opts.departureSegments.length;
+	searchQuery += "&TripType=" + opts.tripType
+				+ "&SegNo=" + segNo;
+
+	for(var i = 0; i < segNo; i++){
+		searchQuery += "&SO" + i + "=" + opts.departureSegments[i];
+		searchQuery += "&SD" + i + "=" + opts.arrivalSegments[i];
+		searchQuery += "&SDP" + i + "=" + opts.departureDates[i];
+	}
+
+	searchQuery += "&AD=" + opts.adults;
 
 	return searchQuery;
 }

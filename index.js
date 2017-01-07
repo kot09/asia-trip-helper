@@ -13,16 +13,15 @@ app.get('/', function (req, res) {
   	}
 
 	var opts = {
-		tripType : 1,
-		departureSegments : ["YUL"],
-		arrivalSegments : ["OSA"],
-		departureDates : ["01-07-2017"],
+		tripType : 4,
+		departureSegments : ["YUL", "SEL"],
+		arrivalSegments : ["OSA", "YUL"],
+		departureDates : ["01-07-2017", "22-07-2017"],
 		adults : 1
 	};
 
 	momondo.getLowestPrice(opts, getLowestPriceCallback);
 
-	//phantom.kill();
 })
 
 app.listen(3000, function () {
