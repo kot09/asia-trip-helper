@@ -1,0 +1,3 @@
+================================================================================
+{"tripType":4,"departureSegments":["YUL","SEL"],"arrivalSegments":["OSA","YUL"],"departureDates":["1-7-2017","22-7-2017"],"adults":1}
+Cheapest price for your criterias: 1,863

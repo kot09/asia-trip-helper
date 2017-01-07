@@ -56,7 +56,7 @@ Momondo.prototype.getLowestPrice = function(opts, callback){
 					phInstance.exit();
 					console.log("Phantom instance exited");
 				});
-			}, 10000);
+			}, 20000);
 		});
 	})
 	.catch(error => {
