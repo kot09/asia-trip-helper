@@ -25,7 +25,9 @@ var Momondo = function(){};
 * }
 * TODO in the future: Ticket class, Direct preferred, include nearby airports, # of childs
 */
-Momondo.prototype.getLowestPrice = function(opts){
+Momondo.prototype.getLowestPrice = function(opts, callback){
+	//var self = this;
+
 	var sitepage = urlSetup(opts);
 	var phInstance = null;
 
@@ -36,23 +38,27 @@ Momondo.prototype.getLowestPrice = function(opts){
 	})
 	.then(page => {
 		// page.property('onResourceError', function(resourceError) {
-		//     //console.log('Unable to load resource (#' + resourceError.id + 'URL:' + resourceError.url + ')');
-  // 			//console.log('Error code: ' + resourceError.errorCode + '. Description: ' + resourceError.errorString)
+		//     console.log('Unable to load resource (#' + resourceError.id + 'URL:' + resourceError.url + ')');
+  // 			console.log('Error code: ' + resourceError.errorCode + '. Description: ' + resourceError.errorString);
 		// });
 
 		page.open(sitepage)
 		.then(function(status){
 			global.setTimeout(function () {
 				page.evaluate(function() {
-					var lol = document.querySelectorAll('[data-flight-pos="0"]')[0];
+					var cheapestPriceDiv = document.querySelectorAll('[data-flight-pos="0"]')[0];
 
-				    return lol.innerHTML;
+				    return cheapestPriceDiv.innerHTML;
 				}).then(function(html){
-					var doc = $.parseHTML(html);
-					var priceDiv = $(doc).find(".price-pax")[0];
+					var priceDiv = $.parseHTML(html);
 					var price = $(priceDiv).find(".value")[0].innerHTML;
+
+					callback(price);
+
+					page.close();
+					phInstance.exit();
 				});
-			}, 20000);
+			}, 5000);
 		});
 	})
 	.catch(error => {

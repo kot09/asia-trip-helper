@@ -4,16 +4,23 @@ var app = express()
 var momondo = require('./configs/momondo/momondo.js');
 
 app.get('/', function (req, res) {
-  res.send('Hello World!')
-  	var opts = {
-  		tripType : 1,
-  		departureSegments : ["YUL"],
-  		arrivalSegments : ["OSA"],
-  		departureDates : ["01-07-2017"],
-  		adults : 1
-  	};
+  	res.send('Hello World!');
 
-	momondo.getLowestPrice(opts);
+  	var momondoPrice;
+	function getLowestPriceCallback(result){
+  		momondoPrice = result;
+  		console.log(momondoPrice);
+  	}
+
+	var opts = {
+		tripType : 1,
+		departureSegments : ["YUL"],
+		arrivalSegments : ["OSA"],
+		departureDates : ["01-07-2017"],
+		adults : 1
+	};
+
+	momondo.getLowestPrice(opts, getLowestPriceCallback);
 
 	//phantom.kill();
 })
