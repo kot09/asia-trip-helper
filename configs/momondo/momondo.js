@@ -26,8 +26,6 @@ var Momondo = function(){};
 * TODO in the future: Ticket class, Direct preferred, include nearby airports, # of childs
 */
 Momondo.prototype.getLowestPrice = function(opts, callback){
-	//var self = this;
-
 	var sitepage = urlSetup(opts);
 	var phInstance = null;
 
@@ -37,15 +35,12 @@ Momondo.prototype.getLowestPrice = function(opts, callback){
     	return instance.createPage();
 	})
 	.then(page => {
-		// page.property('onResourceError', function(resourceError) {
-		//     console.log('Unable to load resource (#' + resourceError.id + 'URL:' + resourceError.url + ')');
-  // 			console.log('Error code: ' + resourceError.errorCode + '. Description: ' + resourceError.errorString);
-		// });
-
+		console.log("Opening page. Wait approx. 5-10 seconds for Momondo to load completely...");
 		page.open(sitepage)
 		.then(function(status){
 			global.setTimeout(function () {
 				page.evaluate(function() {
+					console.log("Page loaded. Getting cheapest price... ");
 					var cheapestPriceDiv = document.querySelectorAll('[data-flight-pos="0"]')[0];
 
 				    return cheapestPriceDiv.innerHTML;
@@ -83,7 +78,9 @@ function urlSetup(opts)
 		return;
 	}
 
-	return url + configs.MOMONDO_FLIGHTS_SEARCH_URL_SEARCH_QUERY_SUFFIX;
+	url += configs.MOMONDO_FLIGHTS_SEARCH_URL_SEARCH_QUERY_SUFFIX
+	console.log("Url being used: " + url);
+	return url;
 }
 
 function getOneWaySearchQuery(opts){

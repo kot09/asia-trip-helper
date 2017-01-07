@@ -9,7 +9,7 @@ app.get('/', function (req, res) {
   	var momondoPrice;
 	function getLowestPriceCallback(result){
   		momondoPrice = result;
-  		console.log(momondoPrice);
+  		console.log("Cheapest price for your criterias: " + momondoPrice);
   	}
 
 	var opts = {
