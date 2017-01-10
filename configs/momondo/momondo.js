@@ -25,7 +25,10 @@ var Momondo = function(){};
 * }
 * TODO in the future: Ticket class, Direct preferred, include nearby airports, # of childs
 */
-Momondo.prototype.getLowestPrice = function(opts, callback){
+Momondo.prototype.getLowestPrice = function(opts, callback, time){
+	if(!time)
+		time = 20000;
+
 	var sitepage = urlSetup(opts);
 	var phInstance = null;
 
@@ -56,7 +59,7 @@ Momondo.prototype.getLowestPrice = function(opts, callback){
 					phInstance.exit();
 					console.log("Phantom instance exited");
 				});
-			}, 20000);
+			}, time);
 		});
 	})
 	.catch(error => {
