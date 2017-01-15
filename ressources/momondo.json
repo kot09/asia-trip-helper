@@ -2,6 +2,22 @@
 	{
 		"tripType" : 4,
 		"departureSegments" : ["YUL", "TYO"],
+		"arrivalSegments" : ["SEL", "YUL"],
+		"departureDates" : ["July 1, 2017", "July 22, 2017"],
+		"adults" : 1,
+		"outputFileName" : "4-YUL-SEL-TYO-YUL.txt"
+	},
+	{
+		"tripType" : 4,
+		"departureSegments" : ["YUL", "OSA"],
+		"arrivalSegments" : ["SEL", "YUL"],
+		"departureDates" : ["July 1, 2017", "July 22, 2017"],
+		"adults" : 1,
+		"outputFileName" : "4-YUL-SEL-OSA-YUL.txt"
+	},
+	{
+		"tripType" : 4,
+		"departureSegments" : ["YUL", "TYO"],
 		"arrivalSegments" : ["PUS", "YUL"],
 		"departureDates" : ["July 1, 2017", "July 22, 2017"],
 		"adults" : 1,
