@@ -3,7 +3,7 @@ var _ = require('lodash');
 var fs = require('fs');
 var out = "";
 
-var n = 1;
+var n = 0;
 var json;
 var jsonEntries;
 
@@ -92,7 +92,23 @@ function flightSimulation(opts){
 			simulationNumber++;
 			getLowestPrice();
 		}else{
-			fs.writeFile(opts.outputFileName, out, function(e){});
+			var today = new Date();
+			const dir = "output";
+
+			if (!fs.existsSync(dir)){
+			    fs.mkdirSync(dir);
+			}
+
+			console.log("******************************");
+			console.log("WRITING TO FILE...");
+			console.log("******************************");
+			fs.writeFile("output" + "/" + today.getFullYear()+"-"
+				+(today.getMonth()+1)+"-"
+				+today.getDate()+"_"
+				+opts.outputFileName
+				, out, function(e){});
+
+			out = "";
 
 			if(n+1 < jsonEntries){
 				n += 1;
