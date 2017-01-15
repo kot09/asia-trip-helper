@@ -42,6 +42,8 @@ Momondo.prototype.getLowestPrice = function(opts, callback, time){
 		console.log("Page opened. Wait approx. 5-10 seconds for Momondo to load completely...");
 		page.open(sitepage)
 		.then(function(status){
+			var sitelink = sitepage;
+
 			global.setTimeout(function () {
 				page.evaluate(function() {
 					console.log("Page loaded. Getting cheapest price... ");
@@ -52,7 +54,7 @@ Momondo.prototype.getLowestPrice = function(opts, callback, time){
 					var priceDiv = $.parseHTML(html);
 					var price = $(priceDiv).find(".value")[0].innerHTML;
 
-					callback(price);
+					callback(price, sitelink);
 
 					page.close();
 					console.log("Page closed");
@@ -65,6 +67,7 @@ Momondo.prototype.getLowestPrice = function(opts, callback, time){
 	.catch(error => {
     	console.log(error);
     	phInstance.exit();
+    	callback(0, null);
 	});
 }
 
