@@ -16,7 +16,7 @@ function startSearch(){
 
 function flightSimulation(opts){
 	var simulationNumber = 0;
-	const TOTAL_SIMULATIONS = 20;
+	const TOTAL_SIMULATIONS = 30;
 
 	function getLowestPriceCallback(result, link){
 		out += "Cheapest price for your criterias: " + result + "\n";

@@ -1,74 +1,10 @@
 [
 	{
-		"tripType" : 4,
-		"departureSegments" : ["YUL", "TYO"],
-		"arrivalSegments" : ["SEL", "YUL"],
-		"departureDates" : ["July 1, 2017", "July 22, 2017"],
-		"adults" : 1,
-		"outputFileName" : "4-YUL-SEL-TYO-YUL.txt"
-	},
-	{
-		"tripType" : 4,
-		"departureSegments" : ["YUL", "OSA"],
-		"arrivalSegments" : ["SEL", "YUL"],
-		"departureDates" : ["July 1, 2017", "July 22, 2017"],
-		"adults" : 1,
-		"outputFileName" : "4-YUL-SEL-OSA-YUL.txt"
-	},
-	{
-		"tripType" : 4,
-		"departureSegments" : ["YUL", "TYO"],
-		"arrivalSegments" : ["PUS", "YUL"],
-		"departureDates" : ["July 1, 2017", "July 22, 2017"],
-		"adults" : 1,
-		"outputFileName" : "4-YUL-PUS-TYO-YUL.txt"
-	},
-	{
-		"tripType" : 4,
-		"departureSegments" : ["YUL", "OSA"],
-		"arrivalSegments" : ["PUS", "YUL"],
-		"departureDates" : ["July 1, 2017", "July 22, 2017"],
-		"adults" : 1,
-		"outputFileName" : "4-YUL-PUS-OSA-YUL.txt"
-	},
-	{
-		"tripType" : 4,
-		"departureSegments" : ["YUL", "SEL"],
-		"arrivalSegments" : ["TYO", "YUL"],
-		"departureDates" : ["July 1, 2017", "July 22, 2017"],
-		"adults" : 1,
-		"outputFileName" : "4-YUL-TYO-SEL-YUL.txt"
-	},
-	{
-		"tripType" : 4,
-		"departureSegments" : ["YUL", "SEL"],
-		"arrivalSegments" : ["OSA", "YUL"],
-		"departureDates" : ["July 1, 2017", "July 22, 2017"],
-		"adults" : 1,
-		"outputFileName" : "4-YUL-OSA-SEL-YUL.txt"
-	},
-	{
-		"tripType" : 4,
-		"departureSegments" : ["YUL", "PUS"],
-		"arrivalSegments" : ["TYO", "YUL"],
-		"departureDates" : ["July 1, 2017", "July 22, 2017"],
-		"adults" : 1,
-		"outputFileName" : "4-YUL-TYO-PUS-YUL.txt"
-	},
-	{
-		"tripType" : 4,
-		"departureSegments" : ["YUL", "PUS"],
-		"arrivalSegments" : ["OSA", "YUL"],
-		"departureDates" : ["July 1, 2017", "July 22, 2017"],
-		"adults" : 1,
-		"outputFileName" : "4-YUL-OSA-PUS-YUL.txt"
-	},
-	{
 		"tripType" : 2,
 		"departureSegments" : ["YUL"],
 		"arrivalSegments" : ["TYO"],
-		"departureDates" : ["July 1, 2017"],
-		"returnDate" : "July 22, 2017",
+		"departureDates" : ["June 23, 2017"],
+		"returnDate" : "July 14, 2017",
 		"adults" : 1,
 		"outputFileName" : "2-YUL-TYO.txt"
 	},
@@ -76,8 +12,8 @@
 		"tripType" : 2,
 		"departureSegments" : ["YUL"],
 		"arrivalSegments" : ["OSA"],
-		"departureDates" : ["July 1, 2017"],
-		"returnDate" : "July 22, 2017",
+		"departureDates" : ["June 23, 2017"],
+		"returnDate" : "July 14, 2017",
 		"adults" : 1,
 		"outputFileName" : "2-YUL-OSA.txt"
 	},
@@ -85,8 +21,8 @@
 		"tripType" : 2,
 		"departureSegments" : ["YUL"],
 		"arrivalSegments" : ["SEL"],
-		"departureDates" : ["July 1, 2017"],
-		"returnDate" : "July 22, 2017",
+		"departureDates" : ["June 23, 2017"],
+		"returnDate" : "July 14, 2017",
 		"adults" : 1,
 		"outputFileName" : "2-YUL-SEL.txt"
 	},
@@ -94,9 +30,73 @@
 		"tripType" : 2,
 		"departureSegments" : ["YUL"],
 		"arrivalSegments" : ["PUS"],
-		"departureDates" : ["July 1, 2017"],
-		"returnDate" : "July 22, 2017",
+		"departureDates" : ["June 23, 2017"],
+		"returnDate" : "July 14, 2017",
 		"adults" : 1,
 		"outputFileName" : "2-YUL-PUS.txt"
+	},
+	{
+		"tripType" : 4,
+		"departureSegments" : ["YUL", "TYO"],
+		"arrivalSegments" : ["SEL", "YUL"],
+		"departureDates" : ["June 23, 2017", "July 14, 2017"],
+		"adults" : 1,
+		"outputFileName" : "4-YUL-SEL-TYO-YUL.txt"
+	},
+	{
+		"tripType" : 4,
+		"departureSegments" : ["YUL", "OSA"],
+		"arrivalSegments" : ["SEL", "YUL"],
+		"departureDates" : ["June 23, 2017", "July 14, 2017"],
+		"adults" : 1,
+		"outputFileName" : "4-YUL-SEL-OSA-YUL.txt"
+	},
+	{
+		"tripType" : 4,
+		"departureSegments" : ["YUL", "TYO"],
+		"arrivalSegments" : ["PUS", "YUL"],
+		"departureDates" : ["June 23, 2017", "July 14, 2017"],
+		"adults" : 1,
+		"outputFileName" : "4-YUL-PUS-TYO-YUL.txt"
+	},
+	{
+		"tripType" : 4,
+		"departureSegments" : ["YUL", "OSA"],
+		"arrivalSegments" : ["PUS", "YUL"],
+		"departureDates" : ["June 23, 2017", "July 14, 2017"],
+		"adults" : 1,
+		"outputFileName" : "4-YUL-PUS-OSA-YUL.txt"
+	},
+	{
+		"tripType" : 4,
+		"departureSegments" : ["YUL", "SEL"],
+		"arrivalSegments" : ["TYO", "YUL"],
+		"departureDates" : ["June 23, 2017", "July 14, 2017"],
+		"adults" : 1,
+		"outputFileName" : "4-YUL-TYO-SEL-YUL.txt"
+	},
+	{
+		"tripType" : 4,
+		"departureSegments" : ["YUL", "SEL"],
+		"arrivalSegments" : ["OSA", "YUL"],
+		"departureDates" : ["June 23, 2017", "July 14, 2017"],
+		"adults" : 1,
+		"outputFileName" : "4-YUL-OSA-SEL-YUL.txt"
+	},
+	{
+		"tripType" : 4,
+		"departureSegments" : ["YUL", "PUS"],
+		"arrivalSegments" : ["TYO", "YUL"],
+		"departureDates" : ["June 23, 2017", "July 14, 2017"],
+		"adults" : 1,
+		"outputFileName" : "4-YUL-TYO-PUS-YUL.txt"
+	},
+	{
+		"tripType" : 4,
+		"departureSegments" : ["YUL", "PUS"],
+		"arrivalSegments" : ["OSA", "YUL"],
+		"departureDates" : ["June 23, 2017", "July 14, 2017"],
+		"adults" : 1,
+		"outputFileName" : "4-YUL-OSA-PUS-YUL.txt"
 	}
 ]
