@@ -54,12 +54,12 @@ Momondo.prototype.getLowestPrice = function(opts, callback, time){
 					var priceDiv = $.parseHTML(html);
 					var price = $(priceDiv).find(".value")[0].innerHTML;
 
-					callback(price, sitelink);
-
 					page.close();
 					console.log("Page closed");
 					phInstance.exit();
 					console.log("Phantom instance exited");
+
+					callback(price, sitelink);
 				});
 			}, time);
 		});

@@ -16,7 +16,8 @@ function startSearch(){
 
 function flightSimulation(opts){
 	var simulationNumber = 0;
-	const TOTAL_SIMULATIONS = 30;
+	const TOTAL_SIMULATIONS = 20;
+	const TIMEOUT = 20000;
 
 	function getLowestPriceCallback(result, link){
 		out += "Cheapest price for your criterias: " + result + "\n";
@@ -54,8 +55,9 @@ function flightSimulation(opts){
 	}
 
 	function getLowestPrice(){
-		console.log("================================================================================\n");
-		out += "================================================================================\n";
+		const DIVIDER = "================================================================================\n";
+		console.log(DIVIDER);
+		out += DIVIDER;
 		console.log("Currently (Simulation, Loop Number)" + ": (" + n + "," + simulationNumber + ")");
 
 		var searchParameters = _.cloneDeep(opts);
@@ -73,17 +75,14 @@ function flightSimulation(opts){
 
 		var returnDate;
 		if(opts.returnDate){
-			console.log('hey');
-			console.log(opts.returnDate);
-			var date2 = new Date(opts.returnDate);
-			date2.setDate(date2.getDate() + simulationNumber);
-			console.log(date2.getDate());
-			returnDate = date2.getDate() + "-" + (date2.getMonth()+1) + "-" + date2.getFullYear();
+			var date = new Date(opts.returnDate);
+			date.setDate(date.getDate() + simulationNumber);
+			returnDate = date.getDate() + "-" + (date.getMonth()+1) + "-" + date.getFullYear();
 			searchParameters.returnDate = returnDate;
 		}
 
 		out += JSON.stringify(searchParameters) + "\n";
-		momondo.getLowestPrice(searchParameters, getLowestPriceCallback, 30000);
+		momondo.getLowestPrice(searchParameters, getLowestPriceCallback, TIMEOUT);
 	}
 
 	getLowestPrice();
