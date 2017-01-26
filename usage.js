@@ -16,11 +16,12 @@ function startSearch(){
 
 function flightSimulation(opts){
 	var simulationNumber = 0;
-	const TOTAL_SIMULATIONS = 20;
+	const TOTAL_SIMULATIONS = 25;
 	const TIMEOUT = 20000;
 
 	function getLowestPriceCallback(result, link){
-		out += "Cheapest price for your criterias: " + result + "\n";
+		out += "Cheapest price for your criterias: " + result.price + "\n";
+		out += "Flight time: " + JSON.stringify(result.durations) + "\n";
 		out += "Link: " + link + "\n";
 
 		if(simulationNumber+1 < TOTAL_SIMULATIONS){
@@ -39,7 +40,8 @@ function flightSimulation(opts){
 			console.log("******************************");
 			fs.writeFile("output" + "/" + today.getFullYear()+"-"
 				+(today.getMonth()+1)+"-"
-				+today.getDate()+"_"
+				+today.getDate()+"-"
+				+today.getTime()+"_"
 				+opts.outputFileName
 				, out, function(e){});
 
@@ -82,7 +84,7 @@ function flightSimulation(opts){
 		}
 
 		out += JSON.stringify(searchParameters) + "\n";
-		momondo.getLowestPrice(searchParameters, getLowestPriceCallback, TIMEOUT);
+		momondo.getLowestPrice(searchParameters, getLowestPriceCallback);
 	}
 
 	getLowestPrice();

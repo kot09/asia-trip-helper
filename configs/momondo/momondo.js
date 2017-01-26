@@ -49,17 +49,30 @@ Momondo.prototype.getLowestPrice = function(opts, callback, time){
 					console.log("Page loaded. Getting cheapest price... ");
 					var cheapestPriceDiv = document.querySelectorAll('[data-flight-pos="0"]')[0];
 
-				    return cheapestPriceDiv.innerHTML;
+					if(cheapestPriceDiv.innerHTML)
+				    	return cheapestPriceDiv.innerHTML;
+				    else
+				    	callback(null, sitelink);
 				}).then(function(html){
 					var priceDiv = $.parseHTML(html);
 					var price = $(priceDiv).find(".value")[0].innerHTML;
+					var durations = [];
+
+					$(priceDiv).find(".travel-time").each(function(){
+						durations.push($(this).text());
+					});
+
+					var retObj = {
+						price : price,
+						durations : durations
+					}
 
 					page.close();
 					console.log("Page closed");
 					phInstance.exit();
 					console.log("Phantom instance exited");
 
-					callback(price, sitelink);
+					callback(retObj, sitelink);
 				});
 			}, time);
 		});
