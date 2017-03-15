@@ -1,4 +1,5 @@
 var momondo = require('./configs/momondo/momondo.js');
+var flighthub = require('./configs/flighthub/flighthub.js');
 var _ = require('lodash');
 var fs = require('fs');
 var out = "";
@@ -16,7 +17,7 @@ function startSearch(argv){
 	json = JSON.parse(fs.readFileSync(PATH+file, 'utf8'));
 	jsonEntries = json.length;
 
-	flightSimulation(json[n]);
+	flightSimulation(json[n], flighthub);
 }
 
 function setArguments(argv){
@@ -27,7 +28,7 @@ function setArguments(argv){
 		totalSimulations = argv.sims;
 }
 
-function flightSimulation(opts){
+function flightSimulation(opts, website){
 	var simulationNumber = 0;
 	const TIMEOUT = 20000;
 
@@ -96,7 +97,7 @@ function flightSimulation(opts){
 		}
 
 		out += JSON.stringify(searchParameters) + "\n";
-		momondo.getLowestPrice(searchParameters, getLowestPriceCallback);
+		website.getLowestPrice(searchParameters, getLowestPriceCallback);
 	}
 
 	getLowestPrice();
