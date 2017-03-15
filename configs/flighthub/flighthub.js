@@ -43,30 +43,35 @@ FlightHub.prototype.getLowestPrice = function(opts, callback, time){
 				    else
 				    	callback(null, sitelink);
 				}).then(function(html){
-					var priceDiv = $.parseHTML(html);
-					var price = $(priceDiv).find(".price-whole")[0].innerHTML;
-					price += ".";
-					price += $(priceDiv).find(".price-fraction")[0].innerHTML;
+					try{
+						var priceDiv = $.parseHTML(html);
+						var price = $(priceDiv).find(".price-whole")[0].innerHTML;
+						price += ".";
+						price += $(priceDiv).find(".price-fraction")[0].innerHTML;
 
-					var durations = [];
+						var durations = [];
 
-					$(priceDiv).find(".select-segment-left").each(function(){
-						var text = encodeURI($(this).text());
-						text = text.replace(/%0A|%20/g, "");
-						durations.push(text);
-					});
+						$(priceDiv).find(".select-segment-left").each(function(){
+							var text = encodeURI($(this).text());
+							text = text.replace(/%0A|%20/g, "");
+							durations.push(text);
+						});
 
-					var retObj = {
-						price : price,
-						durations : durations
+						var retObj = {
+							price : price,
+							durations : durations
+						}
+
+						page.close();
+						console.log("Page closed");
+						phInstance.exit();
+						console.log("Phantom instance exited");
+
+						callback(retObj, sitelink);
 					}
-
-					page.close();
-					console.log("Page closed");
-					phInstance.exit();
-					console.log("Phantom instance exited");
-
-					callback(retObj, sitelink);
+					catch(err){
+						callback(null, sitelink);
+					}
 				});
 			}, time);
 		});
@@ -121,6 +126,22 @@ function getReturnSearchQuery(opts){
 				+ "&seg1_to=" + opts.departureSegments[0]
 				+ "&seg1_date=" + opts.returnDate
 				+ "&num_adults=" + opts.adults;
+
+	return searchQuery;
+}
+
+function getMultiSearchQuery(opts){
+	var searchQuery = "";
+	var segNo = opts.departureSegments.length;
+
+	for(var i = 0; i < segNo; i++){
+		searchQuery += "seg" + i + "_from=" + opts.departureSegments[i];
+		searchQuery += "&seg" + i + "_to=" + opts.arrivalSegments[i];
+		searchQuery += "&seg" + i + "_date=" + opts.departureDates[i];
+		searchQuery += "&";
+	}
+
+	searchQuery += "num_adults=" + opts.adults;
 
 	return searchQuery;
 }

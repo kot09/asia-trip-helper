@@ -17,6 +17,7 @@ function startSearch(argv){
 	json = JSON.parse(fs.readFileSync(PATH+file, 'utf8'));
 	jsonEntries = json.length;
 
+	flightSimulation(json[n], momondo);
 	flightSimulation(json[n], flighthub);
 }
 
@@ -32,10 +33,14 @@ function flightSimulation(opts, website){
 	var simulationNumber = 0;
 	const TIMEOUT = 20000;
 
-	function getLowestPriceCallback(result, link){
-		out += "Cheapest price for your criterias: " + result.price.replace(",", "") + "\n";
-		out += "Flight time: " + JSON.stringify(result.durations) + "\n";
-		out += "Link: " + link + "\n";
+	function callback(result, link){
+		if(result){
+			out += "Cheapest price for your criterias: " + result.price.replace(",", "") + "\n";
+			out += "Flight time: " + JSON.stringify(result.durations) + "\n";
+			out += "Link: " + link + "\n";
+		}else{
+			out += "Error loading data for this simulation";
+		}
 
 		if(simulationNumber+1 < totalSimulations){
 			simulationNumber++;
@@ -62,7 +67,7 @@ function flightSimulation(opts, website){
 
 			if(n+1 < jsonEntries){
 				n += 1;
-				flightSimulation(json[n]);
+				flightSimulation(json[n], website);
 			}else{
 				console.log("Search complete");
 			}
@@ -97,7 +102,7 @@ function flightSimulation(opts, website){
 		}
 
 		out += JSON.stringify(searchParameters) + "\n";
-		website.getLowestPrice(searchParameters, getLowestPriceCallback);
+		website.getLowestPrice(searchParameters, callback);
 	}
 
 	getLowestPrice();
