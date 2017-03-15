@@ -33,7 +33,7 @@ function flightSimulation(opts, website){
 	const TIMEOUT = 20000;
 
 	function getLowestPriceCallback(result, link){
-		out += "Cheapest price for your criterias: " + result.price + "\n";
+		out += "Cheapest price for your criterias: " + result.price.replace(",", "") + "\n";
 		out += "Flight time: " + JSON.stringify(result.durations) + "\n";
 		out += "Link: " + link + "\n";
 

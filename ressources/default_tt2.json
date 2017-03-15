@@ -1,0 +1,11 @@
+[
+	{
+		"tripType" : 2,
+		"departureSegments" : ["YUL"],
+		"arrivalSegments" : ["IQQ"],
+		"departureDates" : ["March 20, 2017"],
+		"returnDate" : "March 30, 2017",
+		"adults" : 1,
+		"outputFileName" : "CHILE.txt"
+	}
+]

@@ -112,4 +112,17 @@ function getOneWaySearchQuery(opts){
 	return searchQuery;
 }
 
+function getReturnSearchQuery(opts){
+	var searchQuery = "";
+	searchQuery += "&seg0_from=" + opts.departureSegments[0]
+				+ "&seg0_to=" + opts.arrivalSegments[0]
+				+ "&seg0_date=" + opts.departureDates[0]
+				+ "&seg1_from=" + opts.arrivalSegments[0]
+				+ "&seg1_to=" + opts.departureSegments[0]
+				+ "&seg1_date=" + opts.returnDate
+				+ "&num_adults=" + opts.adults;
+
+	return searchQuery;
+}
+
 module.exports = new FlightHub();
