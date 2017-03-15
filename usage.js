@@ -7,7 +7,7 @@ var n = 0;
 var json;
 var jsonEntries;
 var totalSimulations = 25;
-var file = 'momondo.json';
+var file = 'default.json';
 
 function startSearch(argv){
 	const PATH = 'ressources/'
