@@ -49,7 +49,7 @@ Momondo.prototype.getLowestPrice = function(opts, callback, time){
 					console.log("Page loaded. Getting cheapest price... ");
 					var cheapestPriceDiv = document.querySelectorAll('[data-flight-pos="0"]')[0];
 
-					if(cheapestPriceDiv.innerHTML)
+					if(cheapestPriceDiv)
 				    	return cheapestPriceDiv.innerHTML;
 				    else
 				    	callback(null, sitelink);
