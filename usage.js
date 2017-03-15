@@ -6,17 +6,29 @@ var out = "";
 var n = 0;
 var json;
 var jsonEntries;
+var totalSimulations = 25;
+var file = 'momondo.json';
 
-function startSearch(){
-	json = JSON.parse(fs.readFileSync('ressources/momondo.json', 'utf8'));
+function startSearch(argv){
+	const PATH = 'ressources/'
+	setArguments(argv);
+
+	json = JSON.parse(fs.readFileSync(PATH+file, 'utf8'));
 	jsonEntries = json.length;
 
 	flightSimulation(json[n]);
 }
 
+function setArguments(argv){
+	if(argv.file)
+		file = argv.file;
+
+	if(argv.sims)
+		totalSimulations = argv.sims;
+}
+
 function flightSimulation(opts){
 	var simulationNumber = 0;
-	const TOTAL_SIMULATIONS = 25;
 	const TIMEOUT = 20000;
 
 	function getLowestPriceCallback(result, link){
@@ -24,7 +36,7 @@ function flightSimulation(opts){
 		out += "Flight time: " + JSON.stringify(result.durations) + "\n";
 		out += "Link: " + link + "\n";
 
-		if(simulationNumber+1 < TOTAL_SIMULATIONS){
+		if(simulationNumber+1 < totalSimulations){
 			simulationNumber++;
 			getLowestPrice();
 		}else{
